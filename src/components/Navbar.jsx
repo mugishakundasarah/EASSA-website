@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/eassa-logo.svg"; 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#600000] text-white sticky top-0 z-50 w-full py-4">
+    <nav className="bg-gradient-to-r from-[#5C0000] to-[#7a0000] text-white sticky top-0 z-50 w-full py-4 shadow">
       <div className="max-w-screen-xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
@@ -14,11 +14,29 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-sm font-medium">
-          <li><Link to="/" className="hover:underline">Home</Link></li>
-          <li><Link to="/about" className="hover:underline">About Us</Link></li>
-          <li><Link to="/events" className="hover:underline">Events</Link></li>
-          <li><Link to="/culture" className="hover:underline">Culture</Link></li>
+        <ul className="hidden md:flex items-center gap-2 text-sm font-medium">
+          {[
+            { to: "/", label: "Home" },
+            { to: "/about", label: "About Us" },
+            { to: "/events", label: "Events" },
+            { to: "/culture", label: "Culture" },
+          ].map((item) => (
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) =>
+                  `px-3 py-1 rounded-full transition ${
+                    isActive
+                      ? "bg-white/20 text-white"
+                      : "hover:bg-white/10 text-white/90"
+                  }`
+                }
+                end={item.to === "/"}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Menu Toggle */}
@@ -39,11 +57,26 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <ul className="md:hidden flex flex-col bg-[#600000] px-4 py-2 space-y-2 text-sm font-medium">
-          <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-          <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
-          <li><Link to="/events" onClick={() => setMenuOpen(false)}>Events</Link></li>
-          <li><Link to="/culture" onClick={() => setMenuOpen(false)}>Culture</Link></li>
+        <ul className="md:hidden flex flex-col bg-[#600000] px-4 py-3 space-y-2 text-sm font-medium">
+          {[
+            { to: "/", label: "Home" },
+            { to: "/about", label: "About Us" },
+            { to: "/events", label: "Events" },
+            { to: "/culture", label: "Culture" },
+          ].map((item) => (
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) =>
+                  isActive ? "block px-2 py-2 rounded bg-white/10" : "block px-2 py-2"
+                }
+                end={item.to === "/"}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       )}
     </nav>

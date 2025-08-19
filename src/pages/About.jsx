@@ -1,77 +1,147 @@
-import groupPhoto from "../assets/Aboutuspic.png";
-import contactFeet from "../assets/feet-style.png";
+// Text-focused About page (no decorative images)
 
 const About = () => {
   return (
     <>
-      {/* Group Image Banner */}
-      <section>
-        <img src={groupPhoto} alt="EASSA Group" className="w-fulxl h-auto" />
+      {/* Simple header */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-screen-xl mx-auto px-4 py-12 md:py-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-[#5C0000]">About EASSA</h1>
+          <p className="text-gray-700 max-w-3xl">
+            Building a vibrant home for students, faculty, alumni, and friends of East Africa — celebrating together
+            through music, language, food, and stories.
+          </p>
+        </div>
       </section>
 
-      {/* Who We Are */}
+      {/* About EASSA */}
       <section className="bg-white py-16">
-        <div className="max-w-screen-xl mx-auto px-4 text-center md:text-left">
-          <h2 className="text-3xl font-bold mb-4 text-center">Who We Are</h2>
-          <p className="text-gray-700 max-w-5xl mx-auto mb-4">
-            We are an organization committed to building a vibrant community of East African students, faculty,
-            and friends of East Africa. While centered on East African culture, we warmly welcome the wider Stanford
-            community to engage, learn, and celebrate with us.
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-6 text-center">About EASSA</h2>
+          <p className="text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            The East African Stanford Students Association (EASSA) builds a vibrant home for students, faculty,
+            alumni, and friends of East Africa. Grounded in our shared cultures, we invite the wider Stanford community
+            to taste Swahili, Kiswahili phrases, Ugandan rhythms, Ethiopian coffee traditions, and much more—celebrating
+            together through music, language, food, and stories.
           </p>
-          <div className=" max-w-5xl mx-auto">
-            <h3 className="text-lg font-semibold mt-8 mb-2 self-center">Vision Statement:</h3>
-            <p className="text-gray-700 mb-4">
-              Our vision is to create a strong and connected East African community at Stanford by:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2 max-w-3xl ">
-              <li>Sharing East African culture through programs like Nyama choma Social and Sauti Motomoto.</li>
-              <li>Strengthening community bonds through gatherings and cultural events.</li>
-              <li>Providing support and solidarity among East Africans at Stanford.</li>
-              <li>Maintaining connections with EASSA alumni.</li>
+        </div>
+      </section>
+
+      {/* Vision */}
+      <section id="vision" className="bg-gray-50 py-16">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h3 className="text-2xl font-bold mb-4">Vision</h3>
+          <p className="text-gray-700 mb-6 max-w-3xl">
+            We strive to create a strong, connected East-African community at Stanford by:
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <ul className="list-disc pl-6 space-y-3 text-gray-700">
               <li>
-                Organizing engaging events each quarter, such as cookouts, game days, and study nights,
-                to bring people together.
+                <span className="font-semibold">Showcasing culture</span> – signature programmes such as Nyama Choma Social (East-African barbecue)
+                and Sauti Motomoto (our high-energy dance night) bring the sights, sounds, and flavours of the region to campus.
+              </li>
+              <li>
+                <span className="font-semibold">Strengthening bonds</span> – regular gatherings, from tea circles to film nights, spark friendships that
+                last well beyond graduation.
+              </li>
+              <li>
+                <span className="font-semibold">Offering solidarity</span> – new and continuing students find mentorship, academic support, and a listening
+                ear within the EASSA family.
+              </li>
+              <li>
+                <span className="font-semibold">Keeping alumni close</span> – we host virtual catch-ups and Bay-Area mixers so graduates remain part of the story.
+              </li>
+              <li>
+                <span className="font-semibold">Creating quarterly moments</span> – cook-outs, game days, study-jam evenings, and round-table talks ensure there is
+                always an upcoming reason to connect.
               </li>
             </ul>
+            <div />
           </div>
         </div>
       </section>
 
-      {/* Contact Us */}
+      {/* Leadership & Membership */}
       <section className="bg-white py-16">
-        <div className="max-w-screen-xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-screen-xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Name</label>
-                <input type="text" className="w-full border border-gray-300 px-4 py-2 rounded-md" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Stanford Email</label>
-                <input type="email" className="w-full border border-gray-300 px-4 py-2 rounded-md" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Phone Number</label>
-                <input type="tel" className="w-full border border-gray-300 px-4 py-2 rounded-md" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Year</label>
-                <input type="text" className="w-full border border-gray-300 px-4 py-2 rounded-md" />
-              </div>
-              <button type="submit" className="bg-[#5C0000] text-white px-6 py-2 rounded-full font-medium">
-                Submit
-              </button>
-            </form>
+            <h3 className="text-2xl font-bold mb-4">Leadership & Membership</h3>
+            <p className="text-gray-700 mb-4 max-w-2xl">
+              EASSA is led by a student executive team—President, Vice-President, Financial Officer, Event Coordinators, and Communications team.
+            </p>
+            <p className="text-gray-700 max-w-2xl">
+              Membership is open to all Stanford students; associate membership welcomes faculty, staff, and alumni who share our passion for East Africa.
+            </p>
           </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <h4 className="font-semibold mb-2">Explore our flagship events</h4>
+            <p className="text-sm text-gray-600">
+              From high-energy dance nights to community cookouts and study jams, we host events every quarter.
+              Visit the Events page to see what’s coming up.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <div>
-            <img src={contactFeet} alt="Contact Us Design" className=" rounded-md" />
+      {/* Our Event Pillars */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h3 className="text-2xl font-bold mb-8">Our Event Pillars</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+              <h4 className="text-lg font-semibold mb-2">Cultural & Community</h4>
+              <p className="text-gray-700 mb-3">
+                Celebrate East-African heritage while bonding over food, music, and shared stories.
+              </p>
+              <p className="text-sm text-gray-600">
+                Sample: Nyama-Choma cookouts · On-campus East-African music parties · Movie nights · Restaurant tastings · Weekend retreats · Campus picnics
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+              <h4 className="text-lg font-semibold mb-2">Fun & Adventure</h4>
+              <p className="text-gray-700 mb-3">
+                Light-hearted outings that turn classmates into lifelong friends.
+              </p>
+              <p className="text-sm text-gray-600">
+                Sample: Santa Cruz beach trips · Bowling evenings · Laser-tag battles · Board- & video-game nights
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+              <h4 className="text-lg font-semibold mb-2">Study & Support</h4>
+              <p className="text-gray-700 mb-3">
+                Spaces to thrive academically and recharge together.
+              </p>
+              <p className="text-sm text-gray-600">
+                Sample: Group study nights · Exam-week chai breaks · Peer-mentorship huddles
+              </p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Stay Connected */}
+      <section className="bg-white py-16">
+        <div className="max-w-screen-xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 className="text-2xl font-bold mb-4">Stay Connected</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li>
+                <span className="font-semibold">Instagram:</span> @eassa_stanford
+              </li>
+              <li>
+                <span className="font-semibold">Join our mailing list:</span> eassa-students@lists.stanford.edu
+              </li>
+              <li>
+                <span className="font-semibold">Email:</span> stanfordeassa@outlook.com
+              </li>
+            </ul>
+            <p className="mt-4 text-gray-700">We can’t wait to welcome you—karibu sana!</p>
+          </div>
+          <div />
         </div>
       </section>
     </>
   );
-}
+};
 
-export default About
+export default About;
