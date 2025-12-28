@@ -69,7 +69,7 @@ const About = () => {
             <p className="text-gray-700 mb-4 max-w-2xl">
               EASSA is led by a student executive team—President, Vice-President, Financial Officer, Event Coordinators, and Communications team.
             </p>
-            <p className="text-gray-700 max-w-2xl">
+            <p className="text-gray-700 max-w-2xl font-bold">
               Membership is open to all Stanford students; associate membership welcomes faculty, staff, and alumni who share our passion for East Africa.
             </p>
           </div>
