@@ -1,0 +1,36 @@
+name: Deploy to Stanford cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          passphrase: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
+          source: "dist/*"
+          target: "public_html"
+          strip_components: 1
