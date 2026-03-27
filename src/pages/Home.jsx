@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { FaFire, FaMusic, FaMugHot } from 'react-icons/fa'
 import HeroSection from '../components/HeroSection'
+import DriveImage from '../components/DriveImage'
 import { useTeams } from '../hooks/useTeams'
 import { useEvents } from '../hooks/useEvents'
 import missionImage from "../assets/imigongo.png";
@@ -17,62 +18,6 @@ const Home = () => {
     if (name.includes('nyama') || name.includes('choma') || name.includes('bbq')) return FaFire;
     if (name.includes('sauti') || name.includes('music') || name.includes('dance')) return FaMusic;
     return FaMugHot;
-  };
-
-  // Helper function to extract file ID from Google Drive URL
-  const extractFileId = (url) => {
-    if (!url) return null;
-    
-    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      return match[1];
-    } else if (/^[a-zA-Z0-9_-]+$/.test(url.trim())) {
-      return url.trim();
-    }
-    return null;
-  };
-
-  // Helper function to get all possible Google Drive image URL formats
-  const getDriveImageUrls = (url) => {
-    const fileId = extractFileId(url);
-    if (!fileId) return [url];
-    
-    return [
-      `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`,
-      `https://drive.google.com/uc?export=view&id=${fileId}`,
-      `https://drive.google.com/uc?export=download&id=${fileId}`,
-      // CORS proxy as last resort
-      `https://corsproxy.io/?${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${fileId}`)}`
-    ];
-  };
-
-  // Component to handle image loading with fallbacks
-  const DriveImage = ({ url, alt, className, onError }) => {
-    const [currentUrlIndex, setCurrentUrlIndex] = React.useState(0);
-    const urls = getDriveImageUrls(url);
-    const currentUrl = urls[currentUrlIndex];
-
-    const handleError = (e) => {
-      if (currentUrlIndex < urls.length - 1) {
-        // Try next URL format
-        setCurrentUrlIndex(currentUrlIndex + 1);
-      } else {
-        // All formats failed, call onError if provided
-        if (onError) onError(e);
-      }
-    };
-
-    if (!url) return null;
-
-    return (
-      <img
-        src={currentUrl}
-        alt={alt}
-        className={className}
-        loading="lazy"
-        onError={handleError}
-      />
-    );
   };
 
   return (

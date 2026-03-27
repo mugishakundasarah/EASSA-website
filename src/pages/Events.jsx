@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFire, FaMusic, FaMugHot, FaCalendar, FaExternalLinkAlt } from 'react-icons/fa';
+import DriveImage from '../components/DriveImage';
 import { useEvents } from '../hooks/useEvents';
 
 const Events = () => {
@@ -14,57 +15,6 @@ const Events = () => {
     return FaMugHot;
   };
 
-  // Helper function to extract file ID from Google Drive URL
-  const extractFileId = (url) => {
-    if (!url) return null;
-    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      return match[1];
-    } else if (/^[a-zA-Z0-9_-]+$/.test(url.trim())) {
-      return url.trim();
-    }
-    return null;
-  };
-
-  // Helper function to get all possible Google Drive image URL formats
-  const getDriveImageUrls = (url) => {
-    const fileId = extractFileId(url);
-    if (!fileId) return [url];
-    return [
-      `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`,
-      `https://drive.google.com/uc?export=view&id=${fileId}`,
-      `https://drive.google.com/uc?export=download&id=${fileId}`,
-      `https://corsproxy.io/?${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${fileId}`)}`
-    ];
-  };
-
-  // Component to handle image loading with fallbacks
-  const DriveImage = ({ url, alt, className, onError }) => {
-    const [currentUrlIndex, setCurrentUrlIndex] = React.useState(0);
-    const urls = getDriveImageUrls(url);
-    const currentUrl = urls[currentUrlIndex];
-
-    const handleError = (e) => {
-      if (currentUrlIndex < urls.length - 1) {
-        setCurrentUrlIndex(currentUrlIndex + 1);
-      } else {
-        if (onError) onError(e);
-      }
-    };
-
-    if (!url) return null;
-
-    return (
-      <img
-        src={currentUrl}
-        alt={alt}
-        className={className}
-        loading="lazy"
-        onError={handleError}
-      />
-    );
-  };
-
   const formatDate = (dateString) => {
     if (!dateString) return '';
     try {
@@ -75,7 +25,7 @@ const Events = () => {
         month: 'long', 
         day: 'numeric' 
       });
-    } catch (error) {
+    } catch {
       return dateString;
     }
   };
@@ -117,7 +67,7 @@ const Events = () => {
       } else {
         acc.pastEvents.push(event);
       }
-    } catch (error) {
+    } catch {
       acc.upcomingEvents.push(event);
     }
 
