@@ -90,7 +90,7 @@ const Home = () => {
                   )}
                   <p className="text-sm uppercase text-gray-200">{role}</p>
                   <h3 className="text-lg font-semibold">{name}</h3>
-                  <p className="text-sm text-gray-300 ">{from}</p>
+                  <p className="text-sm text-gray-300">{from}</p>
                 </motion.div>
               );
             })
