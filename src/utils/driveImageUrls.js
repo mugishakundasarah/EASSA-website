@@ -1,7 +1,8 @@
 /**
  * Build embeddable image URLs for Google Drive file links.
- * OpenSheet / Sheets often store "share" links; browsers load these most reliably
- * via drive.usercontent.google.com (direct image) rather than /file/d/... pages.
+ * Order matters: drive.usercontent.google.com/download often shows as "(failed)" in DevTools
+ * when used as <img src> (CORP / cross-origin rules), even though curl can get 200.
+ * Thumbnail and drive.google.com/uc tend to work more reliably in production.
  */
 export function extractFileId(url) {
   if (!url || typeof url !== "string") return null;
@@ -19,10 +20,10 @@ export function getDriveImageUrls(url) {
   if (!fileId) return [url.trim()];
 
   return [
-    `https://drive.usercontent.google.com/download?id=${fileId}&export=view`,
     `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`,
     `https://drive.google.com/uc?export=view&id=${fileId}`,
     `https://drive.google.com/uc?export=download&id=${fileId}`,
+    `https://drive.usercontent.google.com/download?id=${fileId}&export=view`,
     `https://corsproxy.io/?${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${fileId}`)}`,
   ];
 }

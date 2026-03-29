@@ -11,9 +11,9 @@ const About = () => {
       </section>
 
       {/* About EASSA */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-6 text-center">About EASSA</h2>
+          {/* <h2 className="text-3xl font-bold mb-6 text-center">About EASSA</h2> */}
           <p className="text-gray-700 max-w-4xl mx-auto leading-relaxed">
             The East African Stanford Students Association (EASSA) builds a vibrant home for students, faculty,
             alumni, and friends of East Africa. Grounded in our shared cultures, we invite the wider Stanford community
