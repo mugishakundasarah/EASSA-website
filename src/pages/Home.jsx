@@ -30,7 +30,6 @@ const Home = () => {
             <h2 className="text-3xl font-bold mb-6">About EASSA</h2>
             <p className="text-gray-700 mb-4">
               EASSA builds a vibrant home for students, faculty, alumni, and friends of East Africa at Stanford.
-              We celebrate together through music, language, food, and stories.
             </p>
             <ul className="list-disc pl-6 text-gray-700 space-y-2">
               <li>Signature events like Nyama Choma Social and Sauti Motomoto</li>
