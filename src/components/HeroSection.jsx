@@ -21,7 +21,7 @@ const HeroSection = () => {
                         Karibu to EASSA
                     </h1>
                     <p className="text-lg md:text-xl font-light mb-6">
-                        Where East African culture meets Stanford life — music, language, food, and community.
+                        Where East African culture meets Stanford life: music, language, food, and community.
                     </p>
                     <div className="flex gap-3">
                       <a href="/events" className="inline-block bg-white text-[#5C0000] text-sm font-semibold px-6 py-2 rounded-full hover:bg-gray-100 transition border-2" style={{ borderColor: 'var(--accent)' }}>

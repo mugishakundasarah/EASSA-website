@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";  // (import if using Link for any internal pages; not strictly needed for this simple footer)
 import { FaInstagram, FaEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
@@ -27,11 +26,15 @@ const Footer = () => {
         </div>
         <div>
           <h4 className="text-sm font-semibold mb-2">Mailing List</h4>
-          <p className="text-sm text-gray-200">eassa-students@lists.stanford.edu</p>
+          <p className="text-sm text-gray-200">
+            <a href="mailto:eassa-students@lists.stanford.edu" className="hover:underline">
+              eassa-students@lists.stanford.edu
+            </a>
+          </p>
         </div>
         <div>
           <h4 className="text-sm font-semibold mb-2">We say</h4>
-          <p className="text-sm text-gray-200">Karibu sana — you are most welcome.</p>
+          <p className="text-sm text-gray-200">Karibu sana. You are most welcome.</p>
         </div>
       </div>
     </footer>

@@ -6,11 +6,7 @@ const About = () => {
       {/* Simple header */}
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-screen-xl mx-auto px-4 py-12 md:py-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-[#5C0000]">About EASSA</h1>
-          <p className="text-gray-700 max-w-3xl">
-            Building a vibrant home for students, faculty, alumni, and friends of East Africa — celebrating together
-            through music, language, food, and stories.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-[#5C0000]">About EASSA</h1>
         </div>
       </section>
 
@@ -21,8 +17,11 @@ const About = () => {
           <p className="text-gray-700 max-w-4xl mx-auto leading-relaxed">
             The East African Stanford Students Association (EASSA) builds a vibrant home for students, faculty,
             alumni, and friends of East Africa. Grounded in our shared cultures, we invite the wider Stanford community
-            to taste Swahili, Kiswahili phrases, Ugandan rhythms, Ethiopian coffee traditions, and much more—celebrating
-            together through music, language, food, and stories.
+            to taste Swahili flavours and Kiswahili phrases, share plates of nyama choma and pilau, pick up snacks like
+            andazi and sambusa, and sit down to staples such as ugali with sombe (cassava leaves), among other East
+            African dishes. On the music side, we celebrate sounds from across the region: Rwandan amaraba, Congolese
+            rumba, and artists like Kenya&apos;s Sauti Sol, alongside Ugandan rhythms and more, always gathering around
+            music, language, food, and stories.
           </p>
         </div>
       </section>
@@ -37,22 +36,22 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <ul className="list-disc pl-6 space-y-3 text-gray-700">
               <li>
-                <span className="font-semibold">Showcasing culture</span> – signature programmes such as Nyama Choma Social (East-African barbecue)
+                <span className="font-semibold">Showcasing culture:</span> signature programmes such as Nyama Choma Social (East-African barbecue)
                 and Sauti Motomoto (our high-energy dance night) bring the sights, sounds, and flavours of the region to campus.
               </li>
               <li>
-                <span className="font-semibold">Strengthening bonds</span> – regular gatherings, from tea circles to film nights, spark friendships that
+                <span className="font-semibold">Strengthening bonds:</span> regular gatherings, from tea circles to film nights, spark friendships that
                 last well beyond graduation.
               </li>
               <li>
-                <span className="font-semibold">Offering solidarity</span> – new and continuing students find mentorship, academic support, and a listening
+                <span className="font-semibold">Offering solidarity:</span> new and continuing students find mentorship, academic support, and a listening
                 ear within the EASSA family.
               </li>
               <li>
-                <span className="font-semibold">Keeping alumni close</span> – we host virtual catch-ups and Bay-Area mixers so graduates remain part of the story.
+                <span className="font-semibold">Keeping alumni close:</span> we host virtual catch-ups and Bay-Area mixers so graduates remain part of the story.
               </li>
               <li>
-                <span className="font-semibold">Creating quarterly moments</span> – cook-outs, game days, study-jam evenings, and round-table talks ensure there is
+                <span className="font-semibold">Creating quarterly moments:</span> cook-outs, game days, study-jam evenings, and round-table talks ensure there is
                 always an upcoming reason to connect.
               </li>
             </ul>
@@ -67,7 +66,7 @@ const About = () => {
           <div>
             <h3 className="text-2xl font-bold mb-4">Leadership & Membership</h3>
             <p className="text-gray-700 mb-4 max-w-2xl">
-              EASSA is led by a student executive team—President, Vice-President, Financial Officer, Event Coordinators, and Communications team.
+              EASSA is led by a student executive team: President, Vice-President, Financial Officer, Event Coordinators, and Communications team.
             </p>
             <p className="text-gray-700 max-w-2xl font-bold">
               Membership is open to all Stanford students; associate membership welcomes faculty, staff, and alumni who share our passion for East Africa.
@@ -126,16 +125,36 @@ const About = () => {
             <h3 className="text-2xl font-bold mb-4">Stay Connected</h3>
             <ul className="space-y-2 text-gray-700">
               <li>
-                <span className="font-semibold">Instagram:</span> @eassa_stanford
+                <span className="font-semibold">Instagram:</span>{" "}
+                <a
+                  href="https://www.instagram.com/eassa_stanford/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#5C0000] underline hover:text-[#7a0000]"
+                >
+                  @eassa_stanford
+                </a>
               </li>
               <li>
-                <span className="font-semibold">Join our mailing list:</span> eassa-students@lists.stanford.edu
+                <span className="font-semibold">Mailing list:</span>{" "}
+                <a
+                  href="mailto:eassa-students@lists.stanford.edu"
+                  className="text-[#5C0000] underline hover:text-[#7a0000]"
+                >
+                  eassa-students@lists.stanford.edu
+                </a>
               </li>
               <li>
-                <span className="font-semibold">Email:</span> stanfordeassa@outlook.com
+                <span className="font-semibold">Email:</span>{" "}
+                <a
+                  href="mailto:stanfordeassa@outlook.com"
+                  className="text-[#5C0000] underline hover:text-[#7a0000]"
+                >
+                  stanfordeassa@outlook.com
+                </a>
               </li>
             </ul>
-            <p className="mt-4 text-gray-700">We can’t wait to welcome you—karibu sana!</p>
+            <p className="mt-4 text-gray-700">We can’t wait to welcome you. Karibu sana!</p>
           </div>
           <div />
         </div>

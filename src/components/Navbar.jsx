@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gradient-to-r from-[#5C0000] to-[#7a0000] text-white sticky top-0 z-50 w-full shadow">
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-2 px-3 py-1 sm:gap-3 sm:px-4 md:gap-4">
-        {/* Logo — tall mark; narrow screens reserve space for the menu button */}
+        {/* Logo: tall mark; narrow screens reserve space for the menu button */}
         <Link
           to="/"
           className="flex min-w-0 max-w-[calc(100%-2.75rem)] items-center sm:max-w-none md:flex-1"
