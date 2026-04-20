@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaFire, FaMusic, FaMugHot, FaCalendar, FaExternalLinkAlt } from 'react-icons/fa';
 import { fetchEventsFromSheet } from '../services/googleSheets';
+import { formatSheetDate } from '../utils/sheetDate';
 
 const Culture = () => {
   const [cultureEvents, setCultureEvents] = useState([]);
@@ -30,14 +31,7 @@ const Culture = () => {
     return FaMugHot;
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
+  const formatDate = (dateString) => formatSheetDate(dateString);
 
   if (loading) {
     return (

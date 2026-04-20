@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaFire, FaMusic, FaMugHot, FaCalendar, FaExternalLinkAlt } from 'react-icons/fa';
 import DriveImage from '../components/DriveImage';
 import { useEvents } from '../hooks/useEvents';
+import { formatSheetDate, parseSheetDate, startOfPacificToday } from '../utils/sheetDate';
 
 const Events = () => {
   const { events, loading } = useEvents();
@@ -15,20 +16,7 @@ const Events = () => {
     return FaMugHot;
   };
 
-  const formatDate = (dateString) => {
-    if (!dateString) return '';
-    try {
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return dateString;
-      return date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      });
-    } catch {
-      return dateString;
-    }
-  };
+  const formatDate = (dateString) => formatSheetDate(dateString);
 
   if (loading) {
     return (
@@ -41,9 +29,8 @@ const Events = () => {
     );
   }
 
-  // Separate events into past and upcoming
-  const now = new Date();
-  now.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+  // Separate events into past and upcoming using Pacific calendar “today”
+  const todayPacific = startOfPacificToday();
 
   const { upcomingEvents, pastEvents } = events.reduce((acc, event) => {
     // Handle field names with trailing spaces
@@ -56,13 +43,10 @@ const Events = () => {
     }
 
     try {
-      const eventDateObj = new Date(eventDate);
-      eventDateObj.setHours(0, 0, 0, 0);
-      
-      if (isNaN(eventDateObj.getTime())) {
-        // Invalid date, treat as upcoming
+      const eventDateObj = parseSheetDate(eventDate);
+      if (!eventDateObj || isNaN(eventDateObj.getTime())) {
         acc.upcomingEvents.push(event);
-      } else if (eventDateObj >= now) {
+      } else if (eventDateObj >= todayPacific) {
         acc.upcomingEvents.push(event);
       } else {
         acc.pastEvents.push(event);
@@ -76,14 +60,18 @@ const Events = () => {
 
   // Sort upcoming events by date (ascending) and past events by date (descending)
   upcomingEvents.sort((a, b) => {
-    const dateA = new Date(a.date || a["date "] || a.Date || a["Date "] || 0);
-    const dateB = new Date(b.date || b["date "] || b.Date || b["Date "] || 0);
+    const va = a.date || a["date "] || a.Date || a["Date "];
+    const vb = b.date || b["date "] || b.Date || b["Date "];
+    const dateA = parseSheetDate(va)?.getTime() ?? 0;
+    const dateB = parseSheetDate(vb)?.getTime() ?? 0;
     return dateA - dateB;
   });
 
   pastEvents.sort((a, b) => {
-    const dateA = new Date(a.date || a["date "] || a.Date || a["Date "] || 0);
-    const dateB = new Date(b.date || b["date "] || b.Date || b["Date "] || 0);
+    const va = a.date || a["date "] || a.Date || a["Date "];
+    const vb = b.date || b["date "] || b.Date || b["Date "];
+    const dateA = parseSheetDate(va)?.getTime() ?? 0;
+    const dateB = parseSheetDate(vb)?.getTime() ?? 0;
     return dateB - dateA;
   });
 

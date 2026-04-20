@@ -5,11 +5,27 @@ import HeroSection from '../components/HeroSection'
 import DriveImage from '../components/DriveImage'
 import { useTeams } from '../hooks/useTeams'
 import { useEvents } from '../hooks/useEvents'
+import { parseSheetDate, startOfPacificToday } from '../utils/sheetDate'
 import missionImage from "../assets/imigongo.png";
 
 const Home = () => {
   const { teams, loading: teamsLoading } = useTeams();
   const { events, loading: eventsLoading } = useEvents();
+
+  const todayPacific = startOfPacificToday();
+  const pastEventsHome = [...events]
+    .filter((event) => {
+      const raw = event.date || event["date "] || event.Date || event["Date "];
+      if (!raw) return false;
+      const dt = parseSheetDate(raw);
+      return dt != null && !Number.isNaN(dt.getTime()) && dt < todayPacific;
+    })
+    .sort((a, b) => {
+      const ta = parseSheetDate(a.date || a["date "] || a.Date || a["Date "])?.getTime() ?? 0;
+      const tb = parseSheetDate(b.date || b["date "] || b.Date || b["Date "])?.getTime() ?? 0;
+      return tb - ta;
+    })
+    .slice(0, 3);
 
   // Helper function to get event icon based on name
   const getEventIcon = (eventName) => {
@@ -97,10 +113,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Events */}
+      {/* Past events */}
       <section className="bg-white py-16">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Events</h2>
+          <h2 className="text-2xl font-bold mb-8">Past Events</h2>
           {eventsLoading ? (
             <div className="text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#5C0000] mx-auto"></div>
@@ -108,7 +124,7 @@ const Home = () => {
             </div>
           ) : (
             <div className="grid md:grid-cols-3 gap-8">
-              {events.slice(0, 3).map((event, i) => {
+              {pastEventsHome.map((event, i) => {
                 // Handle field names with trailing spaces and different cases
                 const eventName = event.name || event["name "] || event.Name || event["Name "] || 'Event';
                 const eventDescription = event.description || event["description "] || event.Description || event["Description "] || '';
@@ -144,9 +160,9 @@ const Home = () => {
                   </motion.a>
                 );
               })}
-              {events.length === 0 && (
+              {pastEventsHome.length === 0 && (
                 <div className="col-span-full text-center py-12">
-                  <p className="text-gray-600">No events scheduled at the moment. Check back soon!</p>
+                  <p className="text-gray-600">No past events to show yet. See upcoming events on the Events page.</p>
                 </div>
               )}
             </div>
